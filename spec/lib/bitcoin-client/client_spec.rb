@@ -167,6 +167,22 @@ describe BitcoinClient::Client do
       end
     end
 
+    service 'listunspent' do
+      
+      context 'success' do
+        it "should produce the expected result" do
+          result(0, true).should == [{"txid" => "c12e92fc2c1c391ba2001e50d6899a18c737cb7eebf39b6f894a8e61884960ea",
+            "vout" => 1,
+            "address" => "mmSniZVi5tgaCvSFUrs2XD3eJv4oxV9TZq",
+            "scriptPubKey" => "76a91441071892d87e48d04fc8b82118409fdc9e9b816188ac",
+            "amount" => 0.00017357,
+            "confirmations" => 1347,
+            "spendable" => true}]
+        end
+      end
+
+    end
+
     service 'verifymessage' do
       context 'success' do
         it "should produce the expected result" do

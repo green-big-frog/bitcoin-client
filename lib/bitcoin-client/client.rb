@@ -276,7 +276,7 @@ class BitcoinClient::Client
   #           maxconf => the maximum number of confirmations an output may have
   #           addressArray => the list of unspent outputs
   def listunspent(minconf=1, maxconf=9999999, addressArray=[])
-    @api.request 'listunspent', minconf, maxconf, addressArray.to_json
+    @api.request 'listunspent', minconf, maxconf, addressArray
   end
   
   # Stop bitcoin server.
