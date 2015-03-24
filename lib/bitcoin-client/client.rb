@@ -264,6 +264,15 @@ class BitcoinClient::Client
   def signrawtransaction(hexstring, transaction = nil, privatekey =nil, sighashtype = "ALL")
     @api.request 'signrawtransaction', hexstring, transaction, privatekey, sighashtype  
   end
+
+  # The listunspent RPC returns an array of unspent transaction outputs belonging to this wallet
+  # Note: as of Bitcoin Core 0.10.0, outputs affecting watch-only addresses will be returned
+  #           minconf => the minimum number of confirmations an output must have
+  #           maxconf => the maximum number of confirmations an output may have
+  #           addressArray => the list of unspent outputs
+  def listunspent(minconf=1, maxconf=9999999, addressArray=[])
+    @api.request 'listunspent', mincon, maxconf, addressArray.to_json
+  end
   
   # Stop bitcoin server.
   def stop
